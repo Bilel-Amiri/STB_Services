@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\Reclamation_Service.props" />
+</Project>

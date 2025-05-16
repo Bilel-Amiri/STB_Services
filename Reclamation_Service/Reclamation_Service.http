@@ -1,0 +1,6 @@
+@Reclamation_Service_HostAddress = http://localhost:5041
+
+GET {{Reclamation_Service_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
