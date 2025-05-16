@@ -1,0 +1,83 @@
+/* Navbar container */
+.header {
+  background-color: #3f8afb; /* Light blue background */
+  padding: 10px 20px; /* Add some padding */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Optional: Add a subtle shadow */
+}
+
+/* Logo */
+.header .logo {
+  color: #333; /* Dark text color for the logo */
+  font-size: 1.5rem; /* Logo font size */
+  font-weight: bold; /* Logo font weight */
+}
+
+/* Logo image */
+.header .logo img {
+  height: 40px; /* Adjust logo height */
+  margin-right: 10px; /* Space between logo and text */
+}
+
+/* Toggle sidebar button */
+.header .toggle-sidebar-btn {
+  color: #333; /* Dark color for the toggle button */
+  font-size: 1.5rem; /* Toggle button size */
+  cursor: pointer; /* Pointer cursor on hover */
+}
+
+/* Nav items */
+.header .header-nav .nav-item {
+  margin-left: 15px; /* Space between nav items */
+}
+
+/* Nav links */
+.header .header-nav .nav-link {
+  color: #333; /* Dark text color for links */
+  padding: 10px 15px; /* Padding for links */
+  border-radius: 4px; /* Rounded corners for links */
+  transition: background-color 0.3s ease; /* Smooth hover effect */
+}
+
+/* Hover effect for nav links */
+.header .header-nav .nav-link:hover {
+  background-color: #cce0ff; /* Slightly darker blue on hover */
+  color: #000; /* Darker text on hover */
+}
+
+/* Dropdown menus */
+.header .header-nav .dropdown-menu {
+  background-color: #e6f0ff; /* Light blue background for dropdowns */
+  border: 1px solid #cce0ff; /* Border color */
+}
+
+/* Dropdown items */
+.header .header-nav .dropdown-item {
+  color: #333; /* Dark text color for dropdown items */
+  padding: 10px 15px; /* Padding for dropdown items */
+  transition: background-color 0.3s ease; /* Smooth hover effect */
+}
+
+/* Hover effect for dropdown items */
+.header .header-nav .dropdown-item:hover {
+  background-color: #cce0ff; /* Slightly darker blue on hover */
+  color: #000; /* Darker text on hover */
+}
+
+/* Notification and message badges */
+.header .header-nav .badge {
+  background-color: #007bff; /* Blue background for badges */
+  color: #fff; /* White text for badges */
+}
+
+/* Profile dropdown */
+.header .header-nav .nav-profile img {
+  height: 40px; /* Profile image height */
+  width: 40px; /* Profile image width */
+  border-radius: 50%; /* Circular profile image */
+}
+
+/* Profile dropdown text */
+.header .header-nav .nav-profile span {
+  color: #333; /* Dark text color for profile name */
+  font-size: 1rem; /* Profile name font size */
+}

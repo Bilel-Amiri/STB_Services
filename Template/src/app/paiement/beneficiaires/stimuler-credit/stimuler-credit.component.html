@@ -1,0 +1,86 @@
+<div class="simulateur-credit virement-container">
+  <h2>Simulateur de Crédit</h2>
+
+  <form (ngSubmit)="calculerCredit()">
+    <div class="form-group">
+      <label for="montant">Montant du crédit :</label>
+      <input
+        type="number"
+        [(ngModel)]="montant"
+        name="montant"
+        id="montant"
+        required
+        placeholder="Entrez le montant"
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="duree">Durée (en mois) :</label>
+      <input
+        type="number"
+        [(ngModel)]="duree"
+        name="duree"
+        id="duree"
+        required
+        placeholder="Entrez la durée"
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="taux">Taux d'intérêt annuel (%) :</label>
+      <input
+        type="number"
+        [(ngModel)]="taux"
+        name="taux"
+        id="taux"
+        required
+        placeholder="Entrez le taux"
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="typeAmortissement">Type d'amortissement :</label>
+      <select
+        [(ngModel)]="typeAmortissement"
+        name="typeAmortissement"
+        id="typeAmortissement"
+        required
+      >
+        <option value="constant">Mensualité constante</option>
+        <option value="variable">Amortissement variable</option>
+      </select>
+    </div>
+
+    <button type="submit">Calculer</button>
+  </form>
+
+  <div *ngIf="result">
+    <h3>Résultat :</h3>
+    <div *ngIf="result.type === 'Mensualité constante'">
+      <p>Type : {{ result.type }}</p>
+      <p>Mensualité : {{ result.mensualite }} TND</p>
+    </div>
+
+    <div *ngIf="result.type === 'Amortissement variable'">
+      <p>Type : {{ result.type }}</p>
+      <table>
+        <thead>
+          <tr>
+            <th>Mois</th>
+            <th>Mensualité</th>
+            <th>Intérêt</th>
+            <th>Capital Restant</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let detail of result.details">
+            <td>{{ detail.mois }}</td>
+            <td>{{ detail.mensualite }} TND</td>
+            <td>{{ detail.interet }} TND</td>
+            <td>{{ detail.capitalRestant }} TND</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

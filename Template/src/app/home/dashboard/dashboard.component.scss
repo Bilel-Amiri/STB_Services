@@ -1,0 +1,282 @@
+/*--------------------------------------------------------------
+# Dashboard
+--------------------------------------------------------------*/
+/* Dashboard section */
+.dashboard {
+  background-color: #e6f0ff; /* Light blue background */
+  padding: 20px; /* Add some padding */
+  border-radius: 8px; /* Optional: Add rounded corners */
+  margin: 20px 0; /* Add some margin */
+}
+
+/* Filter dropdown */
+.dashboard .filter {
+  position: absolute;
+  right: 0px;
+  top: 15px;
+}
+.dashboard .filter .icon {
+  color: #aab7cf;
+  padding-right: 20px;
+  padding-bottom: 5px;
+  transition: 0.3s;
+  font-size: 16px;
+}
+.dashboard .filter .icon:hover, .dashboard .filter .icon:focus {
+  color: #4154f1;
+}
+.dashboard .filter .dropdown-header {
+  padding: 8px 15px;
+}
+.dashboard .filter .dropdown-header h6 {
+  text-transform: uppercase;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  color: #aab7cf;
+  margin-bottom: 0;
+  padding: 0;
+}
+.dashboard .filter .dropdown-item {
+  padding: 8px 15px;
+}
+
+/* Info Cards */
+.dashboard .info-card {
+  padding-bottom: 10px;
+}
+.dashboard .info-card h6 {
+  font-size: 28px;
+  color: #012970;
+  font-weight: 700;
+  margin: 0;
+  padding: 0;
+}
+.dashboard .card-icon {
+  font-size: 32px;
+  line-height: 0;
+  width: 64px;
+  height: 64px;
+  flex-shrink: 0;
+  flex-grow: 0;
+}
+.dashboard .sales-card .card-icon {
+  color: #4154f1;
+  background: #f6f6fe;
+}
+.dashboard .revenue-card .card-icon {
+  color: #2eca6a;
+  background: #e0f8e9;
+}
+.dashboard .customers-card .card-icon {
+  color: #ff771d;
+  background: #ffecdf;
+}
+
+/* Activity */
+.dashboard .activity {
+  font-size: 14px;
+}
+.dashboard .activity .activity-item .activite-label {
+  color: #888;
+  position: relative;
+  flex-shrink: 0;
+  flex-grow: 0;
+  min-width: 64px;
+}
+.dashboard .activity .activity-item .activite-label::before {
+  content: "";
+  position: absolute;
+  right: -11px;
+  width: 4px;
+  top: 0;
+  bottom: 0;
+  background-color: #eceefe;
+}
+.dashboard .activity .activity-item .activity-badge {
+  margin-top: 3px;
+  z-index: 1;
+  font-size: 11px;
+  line-height: 0;
+  border-radius: 50%;
+  flex-shrink: 0;
+  border: 3px solid #fff;
+  flex-grow: 0;
+}
+.dashboard .activity .activity-item .activity-content {
+  padding-left: 10px;
+  padding-bottom: 20px;
+}
+.dashboard .activity .activity-item:first-child .activite-label::before {
+  top: 5px;
+}
+.dashboard .activity .activity-item:last-child .activity-content {
+  padding-bottom: 0;
+}
+
+/* News & Updates */
+.dashboard .news .post-item + .post-item {
+  margin-top: 15px;
+}
+.dashboard .news img {
+  width: 80px;
+  float: left;
+  border-radius: 5px;
+}
+.dashboard .news h4 {
+  font-size: 15px;
+  margin-left: 95px;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+.dashboard .news h4 a {
+  color: #012970;
+  transition: 0.3s;
+}
+.dashboard .news h4 a:hover {
+  color: #4154f1;
+}
+.dashboard .news p {
+  font-size: 14px;
+  color: #777777;
+  margin-left: 95px;
+}
+
+/* Recent Sales */
+.dashboard .recent-sales {
+  font-size: 14px;
+}
+.dashboard .recent-sales .table thead {
+  background: #f6f6fe;
+}
+.dashboard .recent-sales .table thead th {
+  border: 0;
+}
+.dashboard .recent-sales .dataTable-top {
+  padding: 0 0 10px 0;
+}
+.dashboard .recent-sales .dataTable-bottom {
+  padding: 10px 0 0 0;
+}
+
+/* Top Selling */
+.dashboard .top-selling {
+  font-size: 14px;
+}
+.dashboard .top-selling .table thead {
+  background: #f6f6fe;
+}
+.dashboard .top-selling .table thead th {
+  border: 0;
+}
+.dashboard .top-selling .table tbody td {
+  vertical-align: middle;
+}
+.dashboard .top-selling img {
+  border-radius: 5px;
+  max-width: 60px;
+}
+
+/* Add this to your CSS */
+.sales-card .card-body {
+  padding: 1.5rem;
+}
+.sales-card .card-icon {
+  width: 80px;
+  height: 80px;
+  font-size: 40px;
+}
+.sales-card h6 {
+  font-size: 32px;
+}
+
+
+/* Balance Card Styling */
+.sales-card .card-icon {
+  width: 70px;
+  height: 70px;
+  background: #f6f6fe;
+  font-size: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.sales-card .card-body h2 {
+  font-size: 2.5rem;
+  color: #012970;
+  font-weight: 700;
+}
+
+.sales-card .card-icon span {
+  font-weight: 700;
+  color: #4154f1;
+}
+
+.sales-card .card-title {
+  font-size: 1.1rem;
+  color: #6c757d;
+  margin-bottom: 1.5rem;
+}
+/* Balance Card Styles */
+.balance-card {
+  width: 100%;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.card-title {
+  font-size: 16px;
+  color: #6c757d;
+  font-weight: 500;
+  margin: 0;
+}
+
+.card-subtitle {
+  color: #adb5bd;
+  font-weight: 400;
+}
+
+.card-actions .action-button {
+  background: none;
+  border: none;
+  font-size: 20px;
+  color: #6c757d;
+  cursor: pointer;
+}
+
+.card-content {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.currency-symbol {
+  font-size: 28px;
+  font-weight: 700;
+  color: #4154f1;
+  background: #f6f6fe;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.balance-amount {
+  font-size: 36px;
+  font-weight: 700;
+  color: #012970;
+  letter-spacing: 0.5px;
+}

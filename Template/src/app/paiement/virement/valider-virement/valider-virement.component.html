@@ -1,0 +1,118 @@
+<div class="virement-details-container">
+  <!-- Header -->
+  <div class="virement-header">
+    <h2>Valider les Virements en Attente</h2>
+    <p>Gérez les demandes de virement nécessitant une validation</p>
+  </div>
+
+  <!-- Error State -->
+  <div *ngIf="lastError && !isLoading" class="alert alert-danger">
+    {{lastError}}
+    <button (click)="retryLoading()" class="btn-close">
+      <i class="fas fa-redo"></i>
+    </button>
+  </div>
+
+  <!-- Loading State -->
+  <div *ngIf="isLoading" class="loading-state">
+    <div class="spinner"></div>
+    <p>Chargement des virements en attente...</p>
+  </div>
+
+  <!-- Main Content -->
+  <ng-container *ngIf="!isLoading && !lastError">
+    <!-- Pending Virements List -->
+    <div *ngIf="pendingVirements.length > 0 && !selectedVirement" class="transfer-list">
+      <div *ngFor="let virement of pendingVirements" 
+           class="transfer-card pending"
+           (click)="selectVirement(virement)">
+        
+        <div class="card-header">
+          <span class="date">{{ virement.initiationDate | date:'mediumDate' }}</span>
+          <span class="amount pending">
+            {{ virement.amount | currency:'TND':'symbol':'1.2-2' }}
+          </span>
+        </div>
+        
+        <div class="card-body">
+          <div class="detail-row">
+            <span class="detail-label">Service:</span> <br>
+            <span class="detail-value">Virement en attente</span>
+          </div>
+          <br>
+          <div class="detail-row">
+            <span class="detail-label">Destinataire:</span> <br>
+            <span class="detail-value">
+              <span *ngIf="virement.targetRib">RIB: {{ virement.targetRib }}</span>
+              <span *ngIf="!virement.targetRib && virement.targetEmail">Email: {{ virement.targetEmail }}</span>
+            </span>
+          </div>
+        </div>
+        
+        <div class="card-footer">
+          <span class="status pending">
+            <i class="fas fa-clock"></i> En attente
+          </span>
+          <span *ngIf="virement.motif" class="rib">
+            {{ virement.motif }}
+          </span>
+        </div>
+      </div>
+    </div>
+    <div class="transfers-container">
+    <!-- No Pending Virements -->
+    <div *ngIf="pendingVirements.length === 0 && !selectedVirement" class="empty-state">
+      <i class="fas fa-check-circle"></i>
+      Aucun virement en attente de validation
+    </div>
+   
+    <!-- Validation Confirmation -->
+    <div *ngIf="selectedVirement" class="transfer-card selected">
+      <div class="card-header">
+        <span class="date">{{ selectedVirement.initiationDate | date:'mediumDate' }}</span>
+        <span class="amount pending">
+        {{ selectedVirement.amount | currency:'TND':'symbol':'1.2-2' }}
+        </span>
+      </div>
+      
+      <div class="card-body">
+        <div class="detail-row">
+          <span class="detail-label">Service:</span> <br>
+          <span class="detail-value">Validation de virement</span>
+        </div>
+        <br>
+        <div class="detail-row">
+          <span class="detail-label">Destinataire:</span> <br>
+          <span class="detail-value">
+            <span *ngIf="selectedVirement.targetRib">RIB: {{ selectedVirement.targetRib }}</span>
+            <span *ngIf="!selectedVirement.targetRib && selectedVirement.targetEmail">Email: {{ selectedVirement.targetEmail }}</span>
+          </span>
+        </div>
+        <br>
+        <div *ngIf="selectedVirement.motif" class="detail-row">
+          <span class="detail-label">Motif:</span> <br>
+          <span class="detail-value">{{ selectedVirement.motif }}</span>
+        </div>
+      </div>
+      
+      <div class="card-footer actions">
+        <button class="action-btn secondary" 
+                (click)="cancelSelection()" 
+                [disabled]="isLoading">
+          <i class="fas fa-arrow-left"></i> Retour
+        </button>
+        <button class="action-btn primary" 
+                (click)="validateVirement()" 
+                [disabled]="isLoading">
+          <span *ngIf="!isLoading">
+            <i class="fas fa-check-circle"></i> Valider
+          </span>
+          <span *ngIf="isLoading">
+            <i class="fas fa-spinner fa-spin"></i> Validation...
+          </span>
+        </button>
+      </div>
+    </div></div>
+  </ng-container>
+
+</div>

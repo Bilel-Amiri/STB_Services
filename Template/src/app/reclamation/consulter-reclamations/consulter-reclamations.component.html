@@ -1,0 +1,29 @@
+<div class="reclamations-container">
+  <h2>Mes Réclamations</h2>
+
+  <div *ngIf="errorMessage" class="alert alert-danger">
+    {{ errorMessage }}
+  </div>
+
+  <div *ngIf="reclamations.length === 0 && !errorMessage">
+    Aucune réclamation trouvée.
+  </div>
+
+  <ul *ngIf="reclamations.length > 0">
+    <li *ngFor="let rec of reclamations" class="reclamation-item">
+      <h3> {{ rec.subject }}</h3>
+      <p>{{ rec.description }}</p>
+       <div *ngIf="rec.status?.toLowerCase() === 'open'" class="status-box danger">
+    En attente de fixer le problème
+  </div>
+  
+  <div *ngIf="rec.status?.toLowerCase() === 'resolved'" class="status-box success">
+    Votre problème est fixé
+  </div>
+
+<small>Date: {{ rec.createdAt | date:'medium' }}</small>
+    </li>
+    
+  </ul>
+   
+</div>

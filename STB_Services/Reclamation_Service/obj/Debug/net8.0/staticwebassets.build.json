@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "G6BSAqBjHp95prLx2KmIpIOG6RhiDfiEEhfgs5gnbGM=",
+  "Source": "Reclamation_Service",
+  "BasePath": "_content/Reclamation_Service",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}

@@ -1,0 +1,462 @@
+    <section class="section dashboard">
+      <div class="row">
+
+        <!-- Left side columns -->
+        <div class="col-lg-8">
+          <div class="row">
+
+
+
+            
+            <div class="col-12">
+              <div class="card info-card sales-card shadow-sm border-0">
+                
+            
+                <div class="card-body py-3 px-4">
+                  <div class="d-flex justify-content-between align-items-center mb-3">
+                    <h6 class="mb-0 text-muted"   style="min-width: 70px;"      >Solde <span class="text-secondary">| Aujourd'hui</span>  </h6>
+                    <div class="card-icon rounded-circle d-flex align-items-center justify-content-center me-3"   style="min-width: 70px;">
+                      <span class="h2 mb-0">DT</span>
+                    </div>
+                  </div>
+            
+                  <div class="text-end">
+                    <h2 class="fw-bold mb-0">{{ balance }}</h2>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+      
+    
+  
+
+           
+               
+
+                
+            
+
+            
+
+              
+
+                
+
+                
+
+            <div class="card exchange-card">
+              <div class="card-body">
+                <h5 class="card-title">Taux de change <span>| Aujourd'hui</span></h5>
+            
+                <div *ngIf="errorMessage" class="alert alert-danger">
+                  {{ errorMessage }}
+                </div>
+            
+                <div *ngIf="exchangeRates; else loading">
+                  <p><strong>1 TND</strong> = {{ exchangeRates.EUR | number:'1.2-2' }} EUR</p>
+                  <p><strong>1 TND</strong> = {{ exchangeRates.USD | number:'1.2-2' }} USD</p>
+                </div>
+            
+                <ng-template #loading>
+                  <p *ngIf="!errorMessage">Loading exchange rates...</p>
+                </ng-template>
+              </div>
+            </div>
+            
+
+
+
+
+
+
+
+            <!-- Types de Cartes Bancaires -->
+<div class="col-12">
+  <div class="card top-selling overflow-auto">
+    <div class="filter">
+      <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
+      <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+        <li class="dropdown-header text-start">
+          <h6>Filter</h6>
+        </li>
+        <li><a class="dropdown-item" href="#">Today</a></li>
+        <li><a class="dropdown-item" href="#">This Month</a></li>
+        <li><a class="dropdown-item" href="#">This Year</a></li>
+      </ul>
+    </div>
+
+    <div class="card-body pb-0">
+      <h5 class="card-title">Types de Cartes Bancaires</h5>
+
+      <table class="table table-borderless align-middle">
+        <thead>
+          <tr>
+            <th scope="col">Image</th>
+            <th scope="col">Type</th>
+            <th scope="col">Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><img src='assets/img/CARTE VISA CLASSIC INTERNATIONALE.png' alt="VISA CLASSIC INTERNATIONALE" width="50"></td>
+            <td><strong>VISA CLASSIC INTERNATIONALE</strong></td>
+            <td>Carte permettant des paiements et retraits à l’international.</td>
+          </tr>
+          <tr>
+            <td><img src='assets/img/CIB.png' alt="CIB" width="50"></td>
+            <td><strong>CIB</strong></td>
+            <td>Carte interbancaire pour paiements locaux et retraits.</td>
+          </tr>
+          <tr>
+            <td><img src='assets/img/VISA CLASSIC NATIONALE.png' alt="VISA CLASSIC NATIONALE" width="50"></td>
+            <td><strong>VISA CLASSIC NATIONALE</strong></td>
+            <td>Carte pour paiements nationaux en Dinar Tunisien.</td>
+          </tr>
+          <tr>
+            <td><img src='assets/img/STB VISA PLATINUM BUSINESS INTERNATIONALE.png' alt="STB VISA PLATINUM BUSINESS INTERNATIONALE" width="50"></td>
+            <td><strong>STB VISA PLATINUM BUSINESS INTERNATIONALE</strong></td>
+            <td>Carte premium destinée aux professionnels à l'étranger.</td>
+          </tr>
+          <tr>
+            <td><img src='assets/img/VISA PLATINUM BUSINESS NATIONALE.png' alt="VISA PLATINUM BUSINESS NATIONALE" width="50"></td>
+            <td><strong>VISA PLATINUM BUSINESS NATIONALE</strong></td>
+            <td>Carte premium professionnelle utilisable en Tunisie.</td>
+          </tr>
+          <tr>
+            <td><img src='assets/img/STB TRAVEL.png' alt="STB TRAVEL" width="50"></td>
+            <td><strong>STB TRAVEL</strong></td>
+            <td>Carte dédiée aux voyages à l’étranger.</td>
+          </tr>
+          <tr>
+            <td><img src='assets/img/C-Cash.png' alt="C-Cash" width="50"></td>
+            <td><strong>C-Cash</strong></td>
+            <td>Carte prépayée rechargeable pour gestion simple d’argent.</td>
+          </tr>
+          <tr>
+            <td><img src='assets/img/VISA ELECTRON NATIONALE.png' alt="VISA ELECTRON NATIONALE" width="50"></td>
+            <td><strong>VISA ELECTRON NATIONALE</strong></td>
+            <td>Carte de débit à usage local avec contrôle de solde.</td>
+          </tr>
+          <tr>
+            <td><img src='assets/img/TECHNOLOGIQUE INTERNATIONALE.png' alt="TECHNOLOGIQUE INTERNATIONALE" width="50"></td>
+            <td><strong>TECHNOLOGIQUE INTERNATIONALE</strong></td>
+            <td>Carte dédiée aux transactions technologiques à l’international.</td>
+          </tr>
+          <tr>
+            <td><img src='assets/img/CARTE MASTERCARD GOLD INTERNATIONALE.png' alt="MASTERCARD GOLD INTERNATIONALE" width="50"></td>
+            <td><strong>MASTERCARD GOLD INTERNATIONALE</strong></td>
+            <td>Carte haut de gamme pour transactions mondiales.</td>
+          </tr>
+          <tr>
+            <td><img src='assets/img/CARTE MASTERCARD GOLD NATIONALE.png' alt="MASTERCARD GOLD NATIONALE" width="50"></td>
+            <td><strong>MASTERCARD GOLD NATIONALE</strong></td>
+            <td>Carte haut de gamme pour usage national.</td>
+          </tr>
+          <tr>
+            <td><img src='assets/img/C-Pay.png' alt="C-Pay" width="50"></td>
+            <td><strong>C-Pay</strong></td>
+            <td>Carte simple et rapide pour paiements en ligne.</td>
+          </tr>
+          <tr>
+            <td><img src='assets/img/Epargne.png' alt="Epargne" width="50"></td>
+            <td><strong>Epargne</strong></td>
+            <td>Carte liée à un compte d’épargne pour retraits limités.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+<!-- End Types de Cartes Bancaires -->
+
+
+          </div>
+        </div><!-- End Left side columns -->
+
+        <!-- Right side columns -->
+        <div class="col-lg-4">
+
+          <!-- Recent Activity -->
+          <div class="card">
+            <div class="filter">
+              <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
+              <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+                <li class="dropdown-header text-start">
+                  <h6>Filter</h6>
+                </li>
+
+                <li><a class="dropdown-item" href="#">Today</a></li>
+                <li><a class="dropdown-item" href="#">This Month</a></li>
+                <li><a class="dropdown-item" href="#">This Year</a></li>
+              </ul>
+            </div>
+
+            <div class="card-body">
+              <h5 class="card-title">Recent Activity <span>| Today</span></h5>
+
+              <div class="activity">
+
+                <div class="activity-item d-flex">
+                  <div class="activite-label">32 min</div>
+                  <i class='bi bi-circle-fill activity-badge text-success align-self-start'></i>
+                  <div class="activity-content">
+                    Quia quae rerum <a href="#" class="fw-bold text-dark">explicabo officiis</a> beatae
+                  </div>
+                </div><!-- End activity item-->
+
+                <div class="activity-item d-flex">
+                  <div class="activite-label">56 min</div>
+                  <i class='bi bi-circle-fill activity-badge text-danger align-self-start'></i>
+                  <div class="activity-content">
+                    Voluptatem blanditiis blanditiis eveniet
+                  </div>
+                </div><!-- End activity item-->
+
+                <div class="activity-item d-flex">
+                  <div class="activite-label">2 hrs</div>
+                  <i class='bi bi-circle-fill activity-badge text-primary align-self-start'></i>
+                  <div class="activity-content">
+                    Voluptates corrupti molestias voluptatem
+                  </div>
+                </div><!-- End activity item-->
+
+                <div class="activity-item d-flex">
+                  <div class="activite-label">1 day</div>
+                  <i class='bi bi-circle-fill activity-badge text-info align-self-start'></i>
+                  <div class="activity-content">
+                    Tempore autem saepe <a href="#" class="fw-bold text-dark">occaecati voluptatem</a> tempore
+                  </div>
+                </div><!-- End activity item-->
+
+                <div class="activity-item d-flex">
+                  <div class="activite-label">2 days</div>
+                  <i class='bi bi-circle-fill activity-badge text-warning align-self-start'></i>
+                  <div class="activity-content">
+                    Est sit eum reiciendis exercitationem
+                  </div>
+                </div><!-- End activity item-->
+
+                <div class="activity-item d-flex">
+                  <div class="activite-label">4 weeks</div>
+                  <i class='bi bi-circle-fill activity-badge text-muted align-self-start'></i>
+                  <div class="activity-content">
+                    Dicta dolorem harum nulla eius. Ut quidem quidem sit quas
+                  </div>
+                </div><!-- End activity item-->
+
+              </div>
+
+            </div>
+          </div><!-- End Recent Activity -->
+
+          <!-- Budget Report -->
+          <div class="card">
+            <div class="filter">
+              <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
+              <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+                <li class="dropdown-header text-start">
+                  <h6>Filter</h6>
+                </li>
+
+                <li><a class="dropdown-item" href="#">Today</a></li>
+                <li><a class="dropdown-item" href="#">This Month</a></li>
+                <li><a class="dropdown-item" href="#">This Year</a></li>
+              </ul>
+            </div>
+
+            <div class="card-body pb-0">
+              <h5 class="card-title">Budget Report <span>| This Month</span></h5>
+
+              <div id="budgetChart" style="min-height: 400px;" class="echart"></div>
+
+              <script>
+                document.addEventListener("DOMContentLoaded", () => {
+                  var budgetChart = echarts.init(document.querySelector("#budgetChart")).setOption({
+                    legend: {
+                      data: ['Allocated Budget', 'Actual Spending']
+                    },
+                    radar: {
+                      // shape: 'circle',
+                      indicator: [{
+                          name: 'Sales',
+                          max: 6500
+                        },
+                        {
+                          name: 'Administration',
+                          max: 16000
+                        },
+                        {
+                          name: 'Information Technology',
+                          max: 30000
+                        },
+                        {
+                          name: 'Customer Support',
+                          max: 38000
+                        },
+                        {
+                          name: 'Development',
+                          max: 52000
+                        },
+                        {
+                          name: 'Marketing',
+                          max: 25000
+                        }
+                      ]
+                    },
+                    series: [{
+                      name: 'Budget vs spending',
+                      type: 'radar',
+                      data: [{
+                          value: [4200, 3000, 20000, 35000, 50000, 18000],
+                          name: 'Allocated Budget'
+                        },
+                        {
+                          value: [5000, 14000, 28000, 26000, 42000, 21000],
+                          name: 'Actual Spending'
+                        }
+                      ]
+                    }]
+                  });
+                });
+              </script>
+
+            </div>
+          </div><!-- End Budget Report -->
+
+          <!-- Website Traffic -->
+          <div class="card">
+            <div class="filter">
+              <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
+              <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+                <li class="dropdown-header text-start">
+                  <h6>Filter</h6>
+                </li>
+
+                <li><a class="dropdown-item" href="#">Today</a></li>
+                <li><a class="dropdown-item" href="#">This Month</a></li>
+                <li><a class="dropdown-item" href="#">This Year</a></li>
+              </ul>
+            </div>
+
+            <div class="card-body pb-0">
+              <h5 class="card-title">Website Traffic <span>| Today</span></h5>
+
+              <div id="trafficChart" style="min-height: 400px;" class="echart"></div>
+
+              <script>
+                document.addEventListener("DOMContentLoaded", () => {
+                  echarts.init(document.querySelector("#trafficChart")).setOption({
+                    tooltip: {
+                      trigger: 'item'
+                    },
+                    legend: {
+                      top: '5%',
+                      left: 'center'
+                    },
+                    series: [{
+                      name: 'Access From',
+                      type: 'pie',
+                      radius: ['40%', '70%'],
+                      avoidLabelOverlap: false,
+                      label: {
+                        show: false,
+                        position: 'center'
+                      },
+                      emphasis: {
+                        label: {
+                          show: true,
+                          fontSize: '18',
+                          fontWeight: 'bold'
+                        }
+                      },
+                      labelLine: {
+                        show: false
+                      },
+                      data: [{
+                          value: 1048,
+                          name: 'Search Engine'
+                        },
+                        {
+                          value: 735,
+                          name: 'Direct'
+                        },
+                        {
+                          value: 580,
+                          name: 'Email'
+                        },
+                        {
+                          value: 484,
+                          name: 'Union Ads'
+                        },
+                        {
+                          value: 300,
+                          name: 'Video Ads'
+                        }
+                      ]
+                    }]
+                  });
+                });
+              </script>
+
+            </div>
+          </div><!-- End Website Traffic -->
+
+          <!-- News & Updates Traffic -->
+          <div class="card">
+            <div class="filter">
+              <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
+              <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+                <li class="dropdown-header text-start">
+                  <h6>Filter</h6>
+                </li>
+
+                <li><a class="dropdown-item" href="#">Today</a></li>
+                <li><a class="dropdown-item" href="#">This Month</a></li>
+                <li><a class="dropdown-item" href="#">This Year</a></li>
+              </ul>
+            </div>
+
+            <div class="card-body pb-0">
+              <h5 class="card-title">News &amp; Updates <span>| Today</span></h5>
+
+              <div class="news">
+                <div class="post-item clearfix">
+                  <img src="assets/img/news-1.jpg" alt="">
+                  <h4><a href="#">Nihil blanditiis at in nihil autem</a></h4>
+                  <p>Sit recusandae non aspernatur laboriosam. Quia enim eligendi sed ut harum...</p>
+                </div>
+
+                <div class="post-item clearfix">
+                  <img src="assets/img/news-2.jpg" alt="">
+                  <h4><a href="#">Quidem autem et impedit</a></h4>
+                  <p>Illo nemo neque maiores vitae officiis cum eum turos elan dries werona nande...</p>
+                </div>
+
+                <div class="post-item clearfix">
+                  <img src="assets/img/news-3.jpg" alt="">
+                  <h4><a href="#">Id quia et et ut maxime similique occaecati ut</a></h4>
+                  <p>Fugiat voluptas vero eaque accusantium eos. Consequuntur sed ipsam et totam...</p>
+                </div>
+
+                <div class="post-item clearfix">
+                  <img src="assets/img/news-4.jpg" alt="">
+                  <h4><a href="#">Laborum corporis quo dara net para</a></h4>
+                  <p>Qui enim quia optio. Eligendi aut asperiores enim repellendusvel rerum cuder...</p>
+                </div>
+
+                <div class="post-item clearfix">
+                  <img src="assets/img/news-5.jpg" alt="">
+                  <h4><a href="#">Et dolores corrupti quae illo quod dolor</a></h4>
+                  <p>Odit ut eveniet modi reiciendis. Atque cupiditate libero beatae dignissimos eius...</p>
+                </div>
+
+              </div><!-- End sidebar recent posts-->
+
+            </div>
+          </div><!-- End News & Updates -->
+
+        </div><!-- End Right side columns -->
+
+      </div>
+    </section>

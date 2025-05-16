@@ -1,0 +1,54 @@
+/* Sidebar container */
+.sidebar-nav {
+  background-color: #3f8afb; /* Light blue background */
+    padding: 20px; /* Add some padding */
+    border-radius: 8px; /* Optional: Add rounded corners */
+    height: 100vh; /* Full height */
+  }
+  
+  /* Nav items */
+  .sidebar-nav .nav-item {
+    margin-bottom: 10px; /* Space between items */
+  }
+  
+  /* Nav links */
+  .sidebar-nav .nav-link {
+    color: #333; /* Dark text color */
+    padding: 10px 15px; /* Padding for links */
+    border-radius: 4px; /* Rounded corners for links */
+    display: flex;
+    align-items: center;
+    transition: background-color 0.3s ease; /* Smooth hover effect */
+  }
+  
+  /* Nav link icons */
+  .sidebar-nav .nav-link i {
+    margin-right: 10px; /* Space between icon and text */
+    font-size: 1.2rem; /* Icon size */
+  }
+  
+  /* Hover effect for nav links */
+  .sidebar-nav .nav-link:hover {
+    background-color: #cce0ff; /* Slightly darker blue on hover */
+    color: #000; /* Darker text on hover */
+  }
+  
+  /* Active link */
+  .sidebar-nav .nav-link.active {
+    background-color: #b3d1ff; /* Darker blue for active link */
+    color: #000; /* Darker text for active link */
+  }
+  
+  /* Collapsible sections */
+  .sidebar-nav .nav-content {
+    padding-left: 20px; /* Indent nested items */
+  }
+  
+  /* Nav headings */
+  .sidebar-nav .nav-heading {
+    color: #666; /* Gray color for headings */
+    font-size: 0.9rem; /* Smaller font size */
+    text-transform: uppercase; /* Uppercase text */
+    margin-top: 20px; /* Space above headings */
+    margin-bottom: 10px; /* Space below headings */
+  }

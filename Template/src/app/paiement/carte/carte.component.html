@@ -1,0 +1,61 @@
+<div class="card-container">
+  <div class="cards-header">
+    <h2>Vos cartes</h2>
+    <p>Consultez et gérez toutes vos cartes de paiement en un seul endroit</p>
+  </div>
+
+  <div *ngIf="isLoading" class="loading-spinner">
+    <mat-spinner diameter="40"></mat-spinner>
+  </div>
+
+  <div *ngIf="error" class="error-message">
+    {{ error }}
+  </div>
+
+  <div class="card-list">
+    <div *ngFor="let card of cards" class="card-item" (click)="toggleCardActions(card.cardId)">
+
+      <div class="card-image">
+        <img [src]="card.imageUrl" [alt]="card.cardType + ' card'">
+      </div>
+      
+      <div class="card-info">
+        <div class="card-main-info">
+          <h3>{{ card.cardType | titlecase }}</h3>
+          <p class="card-number">•••• •••• •••• {{ card.maskedNumber.slice(-4) }}</p>
+        </div>
+        
+        <div class="card-details">
+          <div class="detail-row">
+            <span class="detail-label">Expire:</span>
+            <span class="detail-value">{{ card.expirationDate | date:'MM/yy' }}</span>
+          </div>
+          <div class="detail-row">
+            <span class="detail-label">Statut:</span>
+            <span class="status-badge" [class.active]="card.status === 'ACTIVE'" 
+                  [class.inactive]="card.status !== 'ACTIVE'">
+              {{ card.status }}
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <div class="card-actions" *ngIf="selectedCardId === card.cardId">
+       <button *ngIf="card.status === 'ACTIVE'" 
+        class="btn-block"
+        (click)="openBlockDialog(card); $event.stopPropagation()">
+  <i class="fas fa-lock"></i> Bloquer la carte
+</button>
+<button *ngIf="card.status !== 'ACTIVE'" 
+        class="btn-deblock"
+        (click)="deblockCard(card.cardId); $event.stopPropagation()">
+  <i class="fas fa-unlock"></i> Débloquer la carte
+</button>
+      </div>
+
+      <div class="action-trigger" (click)="toggleCardActions(card.cardId)">
+        <i class="fas fa-ellipsis-v"></i>
+      </div>
+    </div>
+  </div>
+</div>

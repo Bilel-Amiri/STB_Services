@@ -1,0 +1,125 @@
+<div class="virement-container">
+  <h2>Initier un Virement</h2>
+  
+  <form [formGroup]="virementForm" (ngSubmit)="onSubmit()" novalidate>
+    <!-- General form error message -->
+    <div *ngIf="virementForm.invalid && formSubmitted" class="alert alert-warning">
+      Veuillez corriger les erreurs dans le formulaire avant de soumettre.
+    </div>
+
+    <!-- Destination RIB -->
+    <div class="form-group">
+      <label for="destinationRIB">RIB Bénéficiaire</label>
+      <input 
+        id="destinationRIB"
+        type="text" 
+        formControlName="destinationRIB" 
+        placeholder="Entrez le RIB du bénéficiaire"
+        (input)="virementForm.get('destinationRIB')?.markAsTouched()"
+        [class.is-invalid]="shouldShowError('destinationRIB')">
+      
+      <div *ngIf="shouldShowError('destinationRIB')" class="error-message">
+        <div *ngIf="virementForm.get('destinationRIB')?.errors?.['required']">
+          Le RIB est obligatoire
+        </div>
+        <div *ngIf="virementForm.get('destinationRIB')?.errors?.['pattern']">
+          Le RIB doit contenir uniquement des chiffres
+        </div>
+        <div *ngIf="virementForm.get('destinationRIB')?.errors?.['minlength']">
+          Le RIB doit contenir au moins 10 chiffres
+        </div>
+        <div *ngIf="virementForm.get('destinationRIB')?.errors?.['maxlength']">
+          Le RIB doit contenir au maximum 20 chiffres
+        </div>
+      </div>
+    </div>
+
+    <!-- Destination Email -->
+    <div class="form-group">
+      <label for="destinationEmail">Email du bénéficiaire</label>
+      <input 
+        id="destinationEmail"
+        type="email" 
+        formControlName="destinationEmail" 
+        placeholder="Entrez l'email du bénéficiaire"
+        (input)="virementForm.get('destinationEmail')?.markAsTouched()"
+        [class.is-invalid]="shouldShowError('destinationEmail')">
+      
+      <div *ngIf="shouldShowError('destinationEmail')" class="error-message">
+        <div *ngIf="virementForm.get('destinationEmail')?.errors?.['required']">
+          L'email est obligatoire
+        </div>
+        <div *ngIf="virementForm.get('destinationEmail')?.errors?.['email']">
+          Format d'email invalide
+        </div>
+      </div>
+    </div>
+
+    <!-- Amount -->
+    <div class="form-group">
+      <label for="amount">Montant (TND)</label>
+      <input 
+        id="amount"
+        type="number" 
+        formControlName="amount" 
+        placeholder="Ex: 150.50"
+        step="0.01"
+        min="0.01"
+        (input)="virementForm.get('amount')?.markAsTouched()"
+        [class.is-invalid]="shouldShowError('amount')">
+      
+      <div *ngIf="shouldShowError('amount')" class="error-message">
+        <div *ngIf="virementForm.get('amount')?.errors?.['required']">
+          Le montant est obligatoire
+        </div>
+        <div *ngIf="virementForm.get('amount')?.errors?.['min']">
+          Le montant minimum est 0.01€
+        </div>
+        <div *ngIf="virementForm.get('amount')?.errors?.['max']">
+          Le montant maximum est 100 000€
+        </div>
+        <div *ngIf="virementForm.get('amount')?.errors?.['pattern']">
+          Format invalide (ex: 125.50)
+        </div>
+      </div>
+    </div>
+
+    <!-- Motif -->
+    <div class="form-group">
+      <label for="motif">Motif (optionnel)</label>
+      <textarea
+        id="motif"
+        formControlName="motif" 
+        placeholder="Décrivez le motif du virement"
+        rows="2"
+        (input)="virementForm.get('motif')?.markAsTouched()"
+        [class.is-invalid]="shouldShowError('motif')"></textarea>
+      
+      <div *ngIf="shouldShowError('motif')" class="error-message">
+        <div *ngIf="virementForm.get('motif')?.errors?.['maxlength']">
+          Maximum 255 caractères
+        </div>
+      </div>
+    </div>
+
+    <!-- Submit Button -->
+    <button 
+      type="submit" 
+      class="btn btn-primary"
+      [disabled]="isLoading">
+      
+      <span *ngIf="!isLoading">Initier le virement</span>
+      <span *ngIf="isLoading">
+        <i class="fas fa-spinner fa-spin"></i> Traitement...
+      </span>
+    </button>
+
+    <!-- Messages -->
+    <div *ngIf="successMessage" class="alert alert-success mt-3">
+      <i class="fas fa-check-circle"></i> {{ successMessage }}
+    </div>
+    <div *ngIf="errorMessage" class="alert alert-danger mt-3">
+      <i class="fas fa-exclamation-circle"></i> {{ errorMessage }}
+    </div>
+  </form>
+</div>

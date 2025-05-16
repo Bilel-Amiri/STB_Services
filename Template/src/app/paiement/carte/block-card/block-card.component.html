@@ -1,0 +1,25 @@
+<h2 mat-dialog-title>Bloquer la carte</h2>
+<mat-dialog-content>
+  <p>Êtes-vous sûr de vouloir bloquer les cartes se terminant par {{cardLastFour}}?</p>
+  <mat-form-field appearance="fill">
+    <mat-label>raison</mat-label>
+    <mat-select [formControl]="reasonControl" required>
+      <mat-option value="LOST">Carte perdue</mat-option>
+      <mat-option value="STOLEN">Carte volée</mat-option>
+      <mat-option value="DAMAGED">Carte endommagée</mat-option>
+      <mat-option value="OTHER">Autre</mat-option>
+    </mat-select>
+    <mat-error *ngIf="reasonControl.hasError('required')">
+      euillez sélectionner une raison
+    </mat-error>
+  </mat-form-field>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button (click)="onCancel()">Annuler</button>
+  <button mat-raised-button 
+          color="warn" 
+          (click)="onConfirm()"
+          [disabled]="reasonControl.invalid">
+          Bloquer la carte
+  </button>
+</mat-dialog-actions>
