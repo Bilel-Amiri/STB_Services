@@ -1,0 +1,268 @@
+/* ======================== */
+/*  Initier Virement Styles  */
+/* ======================== */
+
+/* Shared Variables with Historique */
+$primary: #4f46e5;
+$primary-light: #6366f1;
+$primary-dark: #4338ca;
+$success: #10b981;
+$danger: #ef4444;
+$light: #f8fafc;
+$dark: #1e293b;
+$gray: #94a3b8;
+
+/* Glass Morphism Effects */
+$glass-bg: rgba(255, 255, 255, 0.85);
+$glass-border: 1px solid rgba(255, 255, 255, 0.2);
+$glass-shadow: 0 8px 32px rgba(31, 38, 135, 0.1);
+
+/* Main Container - Matches Historique */
+.virement-container {
+  max-width: 900px;
+  margin: 2rem auto;
+  padding: 2.5rem;
+  background: $glass-bg;
+  backdrop-filter: blur(12px);
+  border-radius: 20px;
+  box-shadow: $glass-shadow;
+  border: $glass-border;
+  animation: fadeIn 0.6s ease-out;
+
+  h2 {
+    text-align: center;
+    font-size: 2rem;
+    font-weight: 800;
+    background: linear-gradient(90deg, $primary, $primary-light);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    margin-bottom: 1.5rem;
+    position: relative;
+    padding-bottom: 1rem;
+
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 4px;
+      background: linear-gradient(90deg, $primary, $primary-light);
+      border-radius: 2px;
+    }
+  }
+}
+
+/* Enhanced Form Styles */
+form {
+  .alert {
+    padding: 1rem;
+    border-radius: 12px;
+    margin-bottom: 1.5rem;
+    border-left: 4px solid;
+    background: $glass-bg;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+
+    &.alert-warning {
+      color: #d97706;
+      border-color: #d97706;
+    }
+
+    &.alert-success {
+      color: $success;
+      border-color: $success;
+    }
+
+    &.alert-danger {
+      color: $danger;
+      border-color: $danger;
+    }
+
+    i {
+      margin-right: 0.5rem;
+    }
+  }
+}
+
+/* Dynamic Form Groups */
+.form-group {
+  margin-bottom: 1.75rem;
+  position: relative;
+
+  label {
+    display: block;
+    margin-bottom: 0.75rem;
+    font-weight: 600;
+    color: $dark;
+    font-size: 0.95rem;
+    transition: all 0.3s ease;
+  }
+
+  input {
+    width: 100%;
+    padding: 1rem 1.25rem;
+    border-radius: 12px;
+    border: 1px solid rgba($dark, 0.1);
+    background: rgba(white, 0.8);
+    font-size: 1rem;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+
+    &:focus {
+      outline: none;
+      border-color: $primary;
+      box-shadow: 0 0 0 3px rgba($primary, 0.2);
+      background: white;
+
+      & + label {
+        color: $primary;
+      }
+    }
+
+    &::placeholder {
+      color: $gray;
+      opacity: 0.7;
+    }
+
+    &.is-invalid {
+      border-color: $danger;
+      background: rgba($danger, 0.05);
+
+      & + label {
+        color: $danger;
+      }
+    }
+  }
+}
+
+/* Enhanced Error Messages */
+.error-message {
+  color: $danger;
+  font-size: 0.85rem;
+  margin-top: 0.5rem;
+  padding: 0.5rem 0.75rem;
+  background: rgba($danger, 0.1);
+  border-radius: 8px;
+  display: inline-block;
+  animation: slideDown 0.3s ease-out;
+
+  div {
+    margin: 0.25rem 0;
+  }
+}
+
+/* Submit Button - Matches Historique Style */
+button[type="submit"] {
+  width: 100%;
+  padding: 1.1rem;
+  border-radius: 12px;
+  background: linear-gradient(135deg, $primary, $primary-light);
+  color: white;
+  border: none;
+  font-size: 1.05rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  margin-top: 1rem;
+  box-shadow: 0 4px 14px rgba($primary, 0.25);
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, $primary-dark, $primary);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba($primary, 0.35);
+
+    &::before {
+      opacity: 1;
+    }
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+
+  &:disabled {
+    background: #e2e8f0;
+    color: $gray;
+    transform: none;
+    box-shadow: none;
+    cursor: not-allowed;
+
+    &::before {
+      display: none;
+    }
+  }
+
+  span {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+  }
+
+  .fa-spinner {
+    animation: spin 1s linear infinite;
+  }
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+  .virement-container {
+    padding: 1.75rem;
+    margin: 1.5rem;
+  }
+
+  .form-group input {
+    padding: 0.9rem 1.1rem;
+  }
+
+  button[type="submit"] {
+    padding: 1rem;
+  }
+}
+

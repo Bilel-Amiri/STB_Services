@@ -1,0 +1,42 @@
+<div class="reclamation-container">
+  <h2>Ajouter une Réclamation</h2>
+
+  <form (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="subject">Sujet</label>
+      <input
+        id="subject"
+        name="subject"
+        type="text"
+        [(ngModel)]="subject"
+        placeholder="Sujet de la réclamation"
+        required
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="description">Description</label>
+      <input
+        id="description"
+        name="description"
+        type="text"
+        [(ngModel)]="description"
+        placeholder="Décrivez votre réclamation"
+        required
+      />
+    </div>
+
+    <button type="submit">
+      <span>Soumettre</span>
+    </button>
+
+   <div *ngIf="message" class="alert" [ngClass]="{ 'alert-success': !isError, 'alert-danger': isError }">
+  <i class="fas" [ngClass]="{ 'fa-check-circle': !isError, 'fa-exclamation-triangle': isError }"></i>
+  {{ message }}
+</div>
+
+
+
+
+  </form>
+</div>

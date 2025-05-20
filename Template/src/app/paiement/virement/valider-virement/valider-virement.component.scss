@@ -1,0 +1,222 @@
+
+$primary: #4f46e5 !default;
+$primary-light: #6366f1 !default;
+$primary-dark: #4338ca !default;
+$success: #10b981 !default;
+$danger: #ef4444 !default;
+$warning: #f59e0b !default;
+$light: #f8fafc !default;
+$dark: #1e293b !default;
+$gray: #94a3b8 !default;
+
+// Glass Morphism
+$glass-bg: rgba(255, 255, 255, 0.85) !default;
+$glass-border: 1px solid rgba(255, 255, 255, 0.2) !default;
+$glass-shadow: 0 8px 32px rgba(31, 38, 135, 0.1) !default;
+
+/* Pending Status Colors */
+$warning: #f59e0b;
+$warning-light: #fcd34d;
+$warning-dark: #d97706;
+
+
+
+
+
+/* Pending Transfer Card */
+.transfer-card.pending {
+  border-left: 4px solid $warning;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  
+  &:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 24px rgba($warning, 0.1);
+    
+    &::before {
+      opacity: 1;
+    }
+  }
+  
+  .amount.pending {
+    color: $warning;
+  }
+  
+  .status.pending {
+    background: rgba($warning, 0.1);
+    color: $warning;
+    padding: 0.4rem 1rem;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+}
+
+/* Selected Transfer Card for Validation */
+.transfer-card.selected {
+  border-left: 4px solid $primary;
+  margin-top: 1.5rem;
+  
+  .card-body {
+    grid-template-columns: 120px 1fr;
+  }
+  
+  .card-footer.actions {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 1.5rem;
+    border-top: 1px solid rgba($dark, 0.1);
+    margin-top: 1rem;
+  }
+}
+
+/* Action Buttons */
+.action-btn {
+  padding: 0.75rem 1.5rem;
+  border-radius: 10px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  border: none;
+  
+  i {
+    font-size: 0.9em;
+  }
+  
+  &.primary {
+    background: $primary;
+    color: white;
+    box-shadow: 0 4px 6px rgba($primary, 0.2);
+    
+    &:hover:not(:disabled) {
+      background: $primary-dark;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 12px rgba($primary, 0.3);
+    }
+    
+    &:disabled {
+      background: $gray;
+      cursor: not-allowed;
+    }
+  }
+  
+  &.secondary {
+    background: rgba($gray, 0.1);
+    color: $dark;
+    
+    &:hover:not(:disabled) {
+      background: rgba($gray, 0.2);
+      transform: translateY(-2px);
+    }
+  }
+}
+
+/* Empty State Icon */
+.empty-state i {
+  font-size: 2.5rem;
+  color: $gray;
+  margin-bottom: 1rem;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .transfer-card.selected {
+    .card-body {
+      grid-template-columns: 1fr;
+    }
+    
+    .card-footer.actions {
+      flex-direction: column;
+      gap: 0.75rem;
+      
+      .action-btn {
+        width: 100%;
+        justify-content: center;
+      }
+    }
+  }
+}
+/* Header Styles - Exact match to virement details */
+.virement-header {
+  text-align: center;
+  margin-bottom: 2.5rem;
+  position: relative;
+  padding-bottom: 1.5rem;
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 4px;
+    background: linear-gradient(90deg, $primary, $primary-light);
+    border-radius: 2px;
+  }
+
+  h2 {
+    font-size: 2.2rem;
+    font-weight: 800;
+    background: linear-gradient(90deg, $primary, $primary-light);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    margin-bottom: 0.5rem;
+  }
+
+  p {
+    color: $gray;
+    font-size: 1.1rem;
+  }
+}
+/* Container Styles - Matches virement details */
+.transfers-container {
+  background: $glass-bg;
+  backdrop-filter: blur(12px);
+  border-radius: 16px;
+  padding: 1.75rem;
+  box-shadow: $glass-shadow;
+  border: $glass-border;
+  margin-bottom: 2rem;
+}
+
+/* Empty State - Make it match */
+.empty-state {
+  text-align: center;
+  padding: 2.5rem;
+  color: $gray;
+  font-size: 1.1rem;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+  
+  i {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    color: $gray;
+  }
+}
+
+/* Ensure transfer cards match */
+.transfer-list {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.transfer-card {
+  background: white;
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+  
+  &:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+  }
+}

@@ -1,0 +1,124 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', sans-serif;
+  }
+  
+  body, html {
+    height: 100%;
+  background-color: #002366;
+  }
+  
+  /* Main container */
+  .full-page-container {
+    height: 100vh;
+  width: 100vw; /* Add this line */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #002366; 
+  }
+  
+  /* Split container (left and right sections) */
+  .split-login-container {
+    display: flex;
+    width: 90%;
+    max-width: 1000px;
+    height: 550px;
+    background-color: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  }
+  
+  /* Left Welcome Section */
+  .welcome-section {
+    width: 50%;
+    background: linear-gradient(135deg, #1d4ed8, #1e3a8a);
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 60px 40px;
+    position: relative;
+    clip-path: polygon(0 0, 100% 0, 85% 100%, 0% 100%);
+  }
+  
+  .welcome-content h1 {
+    font-size: 40px;
+    font-weight: 800;
+    margin-bottom: 20px;
+  }
+  
+  .welcome-content p {
+    font-size: 16px;
+    line-height: 1.6;
+  }
+  
+  /* Right Login Section */
+  .login-section {
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: white;
+    padding: 60px 40px;
+  }
+  
+  .login-box {
+    width: 100%;
+  }
+  
+  .login-form h2 {
+    font-size: 28px;
+    color: #1e3a8a;
+    margin-bottom: 20px;
+  }
+  
+  /* Input fields */
+  input {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 14px;
+  }
+  
+  /* Submit button */
+  .login-btn {
+    background: linear-gradient(to right, #1d4ed8, #1e3a8a);
+    color: white;
+    border: none;
+    padding: 12px;
+    width: 100%;
+    font-size: 16px;
+    border-radius: 6px;
+    cursor: pointer;
+    margin-bottom: 20px;
+  }
+  
+  /* Links below the form */
+  .links {
+    font-size: 14px;
+    text-align: center;
+  }
+  
+  .links a {
+    color: #1d4ed8;
+    text-decoration: none;
+  }
+  
+  .links a:hover {
+    text-decoration: underline;
+  }
+  
+  /* Error messages */
+  .error-message {
+    color: red;
+    font-size: 13px;
+    margin-top: -10px;
+    margin-bottom: 10px;
+  }
+  

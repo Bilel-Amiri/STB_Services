@@ -1,0 +1,73 @@
+version: '3.8'
+
+services:
+  sql_server:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    environment:
+      SA_PASSWORD: "4252amA4252"
+      ACCEPT_EULA: "Y"
+    ports:
+      - "1433:1433"
+    volumes:
+      - sql_data:/var/opt/mssql
+    healthcheck:
+      test: CMD-SHELL /opt/mssql-tools/bin/sqlcmd -S localhost -U sa -P 4252amA4252 -Q "SELECT 1"
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 40s
+
+  user_service:
+    build:
+      context: .
+      dockerfile: User_Service/Dockerfile
+    ports:
+      - "5142:8080"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+    depends_on:
+      sql_server:
+        condition: service_healthy
+
+  transaction_service:
+    build:
+      context: .
+      dockerfile: Transaction_Service/Dockerfile
+    ports:
+      - "5010:8080"
+    depends_on:
+      sql_server:
+        condition: service_healthy
+
+  reclamation_service:
+    build:
+      context: .
+      dockerfile: Reclamation_Service/Dockerfile
+    ports:
+      - "5041:8080"
+    depends_on:
+      sql_server:
+        condition: service_healthy
+
+  credit_service:
+    build:
+      context: .
+      dockerfile: Credit_Service/Dockerfile
+    ports:
+      - "5165:8080"
+    depends_on:
+      sql_server:
+        condition: service_healthy
+
+  card_service:
+    build:
+      context: .
+      dockerfile: Card_Service/Dockerfile
+    ports:
+      - "5236:8080"
+    depends_on:
+      sql_server:
+        condition: service_healthy
+
+volumes:
+  sql_data:

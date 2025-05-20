@@ -1,0 +1,137 @@
+<div class="virement-details-container">
+  <!-- Header -->
+  <div class="virement-header">
+    <h2>Historique des Virements</h2>
+    <p>Consultez l'historique de vos transactions</p>
+  </div>
+
+  <!-- Filter Card -->
+  <div class="filter-card" [formGroup]="filterForm">
+    <h5>
+      <i class="fas fa-filter"></i>
+      Filtres
+    </h5>
+    
+    <div class="filter-options">
+      <button 
+        type="button"
+        [class.active]="filterForm.get('filterType')?.value === 'amount'"
+        (click)="filterForm.get('filterType')?.setValue('amount')">
+        <i class="fas fa-money-bill-wave"></i>
+        Montant
+      </button>
+      
+      <button 
+        type="button"
+        [class.active]="filterForm.get('filterType')?.value === 'date'"
+        (click)="filterForm.get('filterType')?.setValue('date')">
+        <i class="fas fa-calendar-alt"></i>
+        Date
+      </button>
+
+      <button 
+        type="button"
+        [class.active]="filterForm.get('filterType')?.value === 'none'"
+        (click)="filterForm.get('filterType')?.setValue('none')">
+        <i class="fas fa-ban"></i>
+        Aucun
+      </button>
+    </div>
+
+    <!-- Amount Filter -->
+    <div *ngIf="filterForm.get('filterType')?.value === 'amount'" class="filter-input-group">
+      <input 
+        type="number" 
+        formControlName="filterValue" 
+        placeholder="Montant exact"
+        (input)="onAmountInputChange()"
+        class="filter-input">
+    </div>
+
+    <!-- Date Filter -->
+    <div *ngIf="filterForm.get('filterType')?.value === 'date'" class="filter-input-group">
+      <input 
+        type="date" 
+        formControlName="filterValue"
+        (change)="applyFilter()"
+        [max]="today | date:'yyyy-MM-dd'"
+        class="filter-input">
+    </div>
+
+    <!-- Reset Button -->
+    <button 
+      *ngIf="filterForm.get('filterValue')?.value && filterForm.get('filterType')?.value !== 'none'"
+      type="button"
+      (click)="resetFilters()"
+      class="reset-btn">
+      <i class="fas fa-undo"></i>
+      Réinitialiser
+    </button>
+  </div>
+
+  <!-- Alert Messages -->
+  <div *ngIf="errorMessage" class="alert alert-danger">
+    {{ errorMessage }}
+    <button (click)="errorMessage = null" class="btn-close">
+      <i class="fas fa-times"></i>
+    </button>
+  </div>
+
+  <!-- Loading State -->
+  <div *ngIf="isLoading" class="loading-state">
+    <div class="spinner"></div>
+  </div>
+
+  <!-- Empty State -->
+  <div *ngIf="!isLoading && filteredTransactions.length === 0" class="empty-state">
+    Aucun virement trouvé
+  </div>
+
+  <!-- Transfer List -->
+  <div class="transfer-list">
+    <div *ngFor="let transfer of filteredTransactions" 
+         class="transfer-card"
+         [class.credit]="transfer.amount > 0"
+         [class.debit]="transfer.amount < 0">
+      
+      <div class="card-header">
+        <span class="date">{{ formatDate(transfer.transactionDate) }}</span>
+        <span class="amount" 
+        [class.credit]="transfer.amount > 0"
+        [class.debit]="transfer.amount < 0">
+    {{ transfer.amount > 0 ? '+' : '-' }}
+    {{ getAbsoluteAmount(transfer.amount) | currency:'TND':'symbol':'1.2-2' }}
+  </span>
+      </div>
+      
+      <div class="card-body">
+        <div class="detail-row">
+          <span class="detail-label">Service:</span> <br>
+          <span class="detail-value">Virement</span>
+        </div>
+        <br>
+        <div class="detail-row">
+          <span class="detail-label">Destinataire:</span> <br>
+          <span class="detail-value">
+            <span *ngIf="transfer.targetAccountId">Compte #{{ transfer.targetAccountId }}</span>
+            <span *ngIf="!transfer.targetAccountId && transfer.targetRib">
+               {{ (transfer.targetRib || '').toString().slice(0,4) }}
+            </span>
+            
+          </span>
+        </div>
+      </div>
+      
+      <div class="card-footer">
+        <span class="status" 
+              [class.credit]="transfer.amount > 0"
+              [class.debit]="transfer.amount < 0">
+          {{ transfer.amount > 0 ? 'Crédit' : 'Débit' }}
+        </span>
+        <span *ngIf="transfer.targetRib" class="rib">
+          {{ transfer.targetRib }}
+        </span>
+      </div>
+    </div>
+  </div>
+</div>

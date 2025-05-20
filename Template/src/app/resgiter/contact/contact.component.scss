@@ -1,0 +1,85 @@
+:host {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    position: relative;
+    padding: 20px;
+  }
+  
+  .blurred-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    background-image: url('/assets/img/image copy 4.png');
+    background-size: 100% 100%;
+    background-position: center;
+    filter: blur(4px);
+    opacity: 0.9;
+  }
+  
+  .content-container {
+    position: relative;
+    z-index: 1;
+    background-color: rgba(164, 162, 162, 0.4);
+    backdrop-filter: blur(10px);
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    max-width: 600px;
+    width: 100%;
+    color: white;
+  }
+  
+  .contact-methods {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+  }
+  
+  .contact-item {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  
+    .icon-large {
+      font-size: 2.5rem;
+      width: 50px;
+      text-align: center;
+    }
+  
+    h3 {
+      margin: 0 0 5px 0;
+      color: aliceblue;
+    }
+  
+    a {
+      color: white;
+      text-decoration: none;
+      transition: color 0.3s;
+  
+      &:hover {
+        color: #007bff;
+      }
+    }
+  }
+  
+  .social-icons {
+    display: flex;
+    gap: 15px;
+    margin-top: 10px;
+  
+    a {
+      color: white;
+      font-size: 1.5rem;
+      transition: transform 0.3s;
+  
+      &:hover {
+        transform: scale(1.2);
+        color: #007bff;
+      }
+    }
+  }

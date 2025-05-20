@@ -1,0 +1,150 @@
+<div class="simulateur-credit virement-container">
+  <h2>Demande de Crédit</h2>
+
+  <!-- User Information -->
+  <div *ngIf="user" class="user-info">
+    <h3>Informations de l'utilisateur</h3>
+
+    <div class="form-group">
+      <label>Nom :</label>
+      <input type="text" [value]="user.firstName + ' ' + user.lastName" readonly />
+    </div>
+
+    <div class="form-group">
+      <label>Email :</label>
+      <input type="email" [value]="user.email" readonly />
+    </div>
+  </div>
+
+  
+ 
+
+  <form [formGroup]="creditForm" (ngSubmit)="onSubmit()">
+
+    <div class="form-group">
+      <h3>Détails du crédit demandé</h3>
+
+      <label for="creditAmount">Montant du crédit :</label>
+      <input
+        type="number"
+        id="creditAmount"
+        formControlName="creditAmount"
+        placeholder="Entrez le montant"
+        required
+      />
+      <div
+        *ngIf="
+          creditForm.get('creditAmount')?.invalid &&
+          creditForm.get('creditAmount')?.touched
+        "
+        class="error"
+      >
+        Le montant du crédit est obligatoire.
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="durationMonths">Durée (en mois) :</label>
+      <input
+        type="number"
+        id="durationMonths"
+        formControlName="durationMonths"
+        placeholder="Entrez la durée"
+        required
+      />
+      <div
+        *ngIf="
+          creditForm.get('durationMonths')?.invalid &&
+          creditForm.get('durationMonths')?.touched
+        "
+        class="error"
+      >
+        La durée est obligatoire.
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="creditType">Type de crédit :</label>
+      <select id="creditType" formControlName="creditType" required>
+        <option value="" disabled selected>Choisissez un type</option>
+        <option value="Crédits Ecologiques">Crédits Écologiques</option>
+        <option value="Prêt épargne études">Prêt épargne études</option>
+        <option value="Prêt Computer">Prêt Computer</option>
+        <option value="Crédits de consommation">Crédits de consommation</option>
+        <option value="Crédits immobiliers">Crédits immobiliers</option>
+        <option value="Crédit eslah masken">Crédit eslah masken</option>
+        <option value="Crédit auto">Crédit auto</option>
+      </select>
+      <div
+        *ngIf="
+          creditForm.get('creditType')?.invalid &&
+          creditForm.get('creditType')?.touched
+        "
+        class="error"
+      >
+        Le type de crédit est obligatoire.
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="amortizationType">Type d'amortissement :</label>
+      <select id="amortizationType" formControlName="amortizationType" required>
+        <option value="" disabled selected>Choisissez un type</option>
+        <option value="constant">Mensualité constante</option>
+        <option value="variable">Amortissement variable</option>
+      </select>
+      <div
+        *ngIf="
+          creditForm.get('amortizationType')?.invalid &&
+          creditForm.get('amortizationType')?.touched
+        "
+        class="error"
+      >
+        Le type d'amortissement est obligatoire.
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="cin">CIN :</label>
+      <input
+        type="text"
+        id="cin"
+        formControlName="cin"
+        placeholder="Entrez votre CIN"
+        required
+      />
+      <div
+        *ngIf="
+          creditForm.get('cin')?.invalid && creditForm.get('cin')?.touched
+        "
+        class="error"
+      >
+        Le CIN est obligatoire.
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="maritalStatus">Situation familiale :</label>
+      <select id="maritalStatus" formControlName="maritalStatus" required>
+        <option value="" disabled selected>Choisissez une option</option>
+        <option value="single">Célibataire</option>
+        <option value="married">Marié(e)</option>
+        <option value="divorced">Divorcé(e)</option>
+        <option value="widowed">Veuf / Veuve</option>
+      </select>
+      <div
+        *ngIf="
+          creditForm.get('maritalStatus')?.invalid &&
+          creditForm.get('maritalStatus')?.touched
+        "
+        class="error"
+      >
+        La situation familiale est obligatoire.
+      </div>
+    </div>
+
+    <button type="submit" [disabled]="creditForm.invalid">
+      Envoyer la demande
+    </button>
+  </form>
+</div>

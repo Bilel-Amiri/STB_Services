@@ -1,0 +1,52 @@
+<div class="full-page-container">
+    <div class="split-login-container">
+      <!-- Left Section with Welcome Content -->
+      <div class="welcome-section">
+        <div class="welcome-background"></div>
+        <div class="welcome-content">
+          <h1>Bienvenue à STB</h1>
+          <p>Gérez vos finances efficacement et en toute sécurité avec STB Bank. Votre partenaire de confiance pour des solutions bancaires modernes .</p>
+        </div>
+      </div>
+      
+      <!-- Right Section with Login Form -->
+      <div class="login-section">
+        <div class="login-box">
+          <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="login-form">
+            <h2>Log in</h2>
+            
+          
+            
+            <div class="form-group">
+              <label>Email</label>
+              <input type="email" formControlName="email" placeholder="Enter your email here..." required>
+              <div *ngIf="f['email'].invalid && (f['email'].dirty || f['email'].touched)" class="error-message">
+                <div *ngIf="f['email'].errors?.['required']">Email is required.</div>
+                <div *ngIf="f['email'].errors?.['email']">Email must be valid.</div>
+              </div>
+            </div>
+            
+            <div class="form-group">
+              <label>Password</label>
+              <input type="password" formControlName="password" placeholder="⚫ ⚫ ⚫ ⚫ ⚫" required>
+              <div *ngIf="f['password'].invalid && (f['password'].dirty || f['password'].touched)" class="error-message">
+                <div *ngIf="f['password'].errors?.['required']">Password is required.</div>
+              </div>
+            </div>
+            
+            <button type="submit" class="login-btn" [disabled]="loginForm.invalid">Log in</button>
+            
+            <div class="links">
+              <a routerLink="/forgot-password">Forgot password?</a>
+              <span>|</span>
+              <a routerLink="/register">Don't have an account? <strong>Sign Up</strong></a>
+            </div>
+            
+            <div *ngIf="errorMessage" class="error-message">
+              {{ errorMessage }}
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
