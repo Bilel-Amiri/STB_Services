@@ -1,0 +1,161 @@
+/* Sidebar Styles */
+.sidebar {
+  width: 250px;
+  background-color: #3f7dfb;
+  padding: 20px;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+  flex-shrink: 0;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  transition: all 0.3s ease;
+  overflow-y: auto;
+}
+
+.sidebar-header {
+  padding: 0 0 20px 0;
+  border-bottom: 1px solid #eee;
+  margin-bottom: 20px;
+}
+
+.sidebar-header h3 {
+  margin: 0;
+  color: #ffffff;
+  font-size: 1.3rem;
+}
+
+.sidebar-nav {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.nav-heading {
+  color: #ffffff;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  margin: 25px 0 10px 0;
+  padding: 0 10px;
+}
+
+.nav-item {
+  margin-bottom: 5px;
+  position: relative;
+}
+
+.nav-link {
+  display: flex;
+  align-items: center;
+  padding: 10px 15px;
+  color: #34495e;
+  text-decoration: none;
+  border-radius: 5px;
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+.nav-link i {
+  margin-right: 10px;
+  font-size: 1.1rem;
+  color: #7f8c8d;
+}
+
+.nav-link span {
+  font-size: 0.95rem;
+  flex-grow: 1;
+}
+
+.nav-link:hover {
+  background-color: #f8f9fa;
+  color: #3498db;
+}
+
+.nav-link:hover i {
+  color: #3498db;
+}
+
+.nav-link.active {
+  background-color: #e3f2fd;
+  color: #3498db;
+  font-weight: 500;
+}
+
+.nav-link.active i {
+  color: #3498db;
+}
+
+/* Submenu styles - Hidden by default */
+.submenu {
+  list-style: none;
+  padding-left: 15px;
+  margin-top: 5px;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+  background-color: #f8f9fa;
+  border-radius: 5px;
+}
+
+/* Show submenu when has-submenu is active */
+.has-submenu.active .submenu {
+  max-height: 300px;
+  padding: 5px 0;
+}
+
+.submenu .nav-link {
+  padding: 8px 15px;
+  font-size: 0.9rem;
+}
+
+.submenu .nav-link i {
+  font-size: 0.9rem;
+}
+
+/* Submenu toggle icon */
+.submenu-toggle {
+  transition: transform 0.3s ease;
+}
+
+.has-submenu.active .submenu-toggle {
+  transform: rotate(180deg);
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+  .sidebar {
+    transform: translateX(-100%);
+  }
+  
+  .sidebar.open {
+    transform: translateX(0);
+  }
+}
+/* Styles existants... */
+
+.has-submenu {
+  .submenu {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+    padding-left: 15px;
+  }
+
+  &.active {
+    .submenu {
+      max-height: 300px; /* Ajustez selon vos besoins */
+    }
+
+    .submenu-toggle {
+      transform: rotate(180deg);
+    }
+  }
+}
+
+.submenu-toggle {
+  transition: transform 0.3s ease;
+  margin-left: auto; /* Pour aligner à droite */
+}
+
+/* Autres styles existants... */

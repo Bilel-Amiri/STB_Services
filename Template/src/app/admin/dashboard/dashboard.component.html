@@ -1,1 +1,107 @@
-<p>dashboard works!</p>
+<main class="main-content">
+  <!-- Header -->
+  <header class="dashboard-header">
+    <div class="header-left">
+      <button class="sidebar-toggle">
+        <i class="bi bi-list"></i>
+      </button>
+      <h2>Tableau de Bord</h2>
+    </div>
+    <div class="header-right">
+      <div class="user-profile">
+        <img src="assets/images/avatar.png" alt="User Avatar">
+        <span>Admin</span>
+        <i class="bi bi-chevron-down"></i>
+      </div>
+    </div>
+  </header>
+
+  <!-- Dashboard Content -->
+  <div class="dashboard-content">
+    <!-- Stats Cards -->
+    <div class="stats-row">
+      <div class="stat-card">
+        <div class="stat-icon bg-primary">
+          <i class="bi bi-people"></i>
+        </div>
+        <div class="stat-info">
+          <h3>1,254</h3>
+          <p>Utilisateurs</p>
+        </div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon bg-success">
+          <i class="bi bi-check-circle"></i>
+        </div>
+        <div class="stat-info">
+          <h3>842</h3>
+          <p>Réclamations résolues</p>
+        </div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon bg-warning">
+          <i class="bi bi-exclamation-triangle"></i>
+        </div>
+        <div class="stat-info">
+          <h3>156</h3>
+          <p>En attente</p>
+        </div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon bg-danger">
+          <i class="bi bi-graph-up"></i>
+        </div>
+        <div class="stat-info">
+          <h3>12.5%</h3>
+          <p>Taux de croissance</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Charts Row -->
+    <div class="charts-row">
+      <div class="chart-container">
+        <h4>Activité des utilisateurs</h4>
+        <div class="chart-placeholder"></div>
+      </div>
+      <div class="chart-container">
+        <h4>Statut des réclamations</h4>
+        <div class="chart-placeholder"></div>
+      </div>
+    </div>
+
+    <!-- Recent Activity -->
+    <div class="recent-activity">
+      <h4>Activité récente</h4>
+      <div class="activity-list">
+        <div class="activity-item">
+          <div class="activity-icon">
+            <i class="bi bi-person-plus"></i>
+          </div>
+          <div class="activity-content">
+            <p>Nouvel utilisateur enregistré</p>
+            <small>Il y a 5 minutes</small>
+          </div>
+        </div>
+        <div class="activity-item">
+          <div class="activity-icon">
+            <i class="bi bi-chat-left-text"></i>
+          </div>
+          <div class="activity-content">
+            <p>Nouvelle réclamation #4587</p>
+            <small>Il y a 15 minutes</small>
+          </div>
+        </div>
+        <div class="activity-item">
+          <div class="activity-icon">
+            <i class="bi bi-check-circle"></i>
+          </div>
+          <div class="activity-content">
+            <p>Réclamation #4582 résolue</p>
+            <small>Il y a 1 heure</small>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>

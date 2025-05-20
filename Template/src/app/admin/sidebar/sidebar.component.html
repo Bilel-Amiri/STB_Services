@@ -1,0 +1,61 @@
+<aside class="sidebar">
+  <div class="sidebar-header">
+    <h3>Admin Panel</h3>
+  </div>
+  <ul class="sidebar-nav">
+    <li class="nav-item">
+      <a class="nav-link" routerLink="/admin/dashboard">
+        <i class="bi bi-speedometer2"></i>
+        <span>Dashboard</span>
+      </a>
+    </li>
+    
+    <li class="nav-heading">Gestion</li>
+    
+    <li class="nav-item has-submenu" [class.active]="isComptesOpen">
+      <a class="nav-link" (click)="toggleComptes()">
+        <i class="bi bi-people-fill"></i>
+        <span>Gestion des Comptes</span>
+        <i class="bi bi-chevron-down submenu-toggle"></i>
+      </a>
+      <ul class="submenu">
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/admin/comptes/gerer">
+            <i class="bi bi-gear-fill"></i>
+            <span>Gérer Comptes</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/admin/comptes/consulter">
+            <i class="bi bi-search"></i>
+            <span>Consulter Comptes</span>
+          </a>
+        </li>
+      </ul>
+    </li>
+    
+    <li class="nav-item has-submenu" [class.active]="isReclamationsOpen">
+      <a class="nav-link" (click)="toggleReclamations()">
+        <i class="bi bi-chat-square-text-fill"></i>
+        <span>Réclamations</span>
+        <i class="bi bi-chevron-down submenu-toggle"></i>
+      </a>
+      <ul class="submenu">
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/admin/reclamations/repondre">
+            <i class="bi bi-reply-fill"></i>
+            <span>Répondre</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/admin/reclamations/consulter">
+            <i class="bi bi-list-check"></i>
+            <span>Consulter</span>
+          </a>
+        </li>
+      </ul>
+    </li>
+    
+   
+  </ul>
+</aside>
